@@ -1,0 +1,56 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    if (session.getAttribute("session") == null) {
+        response.sendRedirect("/login.jsp");
+    }
+%>
+<h1><%= session.getAttribute("nombre")%> <span><%= session.getAttribute("id")%></span></a></h1>
+<nav id="nav">
+    <ul>
+        <% String tipo = (String) session.getAttribute("tipo");
+            if (tipo == "1") {
+                out.println("<li><a href='/home.jsp'>Inicio</a></li>"
+                        + "<li>"
+                        + "<a href='/ciclos.jsp'>Ciclos</a>"
+                        + "</li>"
+                        + "<li>"
+                        + "<a href='/carreras.jsp'>Carreras</a>"
+                        + "</li>"
+                        + "<li>"
+                        + "<a href='/cursos.jsp'>Cursos</a>"
+                        + "</li>"
+                        + "<li>"
+                        + "<a href='/ofertaAcademica.jsp'>Oferta Académica</a>"
+                        + "</li>"
+                        + "<li>"
+                        + "<a href='/profesores.jsp'>Profesores</a>"
+                        + "</li>"
+                        + "<li>"
+                        + "<a href='/alumnos.jsp'>Alumnos</a>"
+                        + "</li>"
+                        + "<li>"
+                        + "<a href='/seguridad.jsp'>Seguridad</a>"
+                        + "</li>");
+
+            } else if (tipo == "3") {
+                out.println("<li>"
+                        + "<a href='/alumnos.jsp'>Alumnos</a>"
+                        + "</li>");
+            } else if (tipo == "2") {
+                out.println("<li>"
+                        + "<a href='/profesores.jsp'>Profesores</a>"
+                        + "</li>");
+            } else if (tipo == "4") {
+                out.println("<li>"
+                        + "<a href='/alumnos.jsp'>Alumnos</a>"
+                        + "</li>");
+            }
+        %>
+
+
+        <li>
+            <a href="loginServlet?data=logout">Cerrar Sesión</a>
+        </li>
+    </ul>
+</nav>
